@@ -1,5 +1,5 @@
 # Table of Contents
-- [ProjectProposal](#project-proposal)
+- [Project Proposal](#project-proposal)
 - [Resources](#resources)
 
 ## Project Proposal
