@@ -21,7 +21,10 @@ The objective of the project is to develop a predictive model that assesses whet
 Dataset - https://www.kaggle.com/datasets/jessemostipak/college-tuition-diversity-and-pay?select=salary_potential.csv
 
 ## Credit Approval Prediction
-// Ibra 
+  In the United States, one of the most important factors in financial well-being is a credit rating. A high rating allows people to get approved for loans of higher amounts and with lower interest rates than people that have a lower credit score. One way to increase this score is by getting a new credit card. While there is no way to know for certain if someone is likely to be approved or not for a new credit card just by knowing their credit score, we can make a prediction based on previous data.
+	Factors that go into credit approval include credit history length, card utilization rates, on-time payment history, and more. There are other factors that can go into the approval process, which are more personal, such as gender, income, and having kids. All of these included, banks go through their own approval processes to determine whether or not to give someone a new card or loan. By tracking this data and seeing the relation between each of these factors and the history of credit approvals, we can make a prediction on someone’s approval odds before they apply to prevent them from damaging their credit by getting denied. 
+
+Dataset - https://www.kaggle.com/datasets/rikdifos/credit-card-approval-prediction?select=application_record.csv
 
 ## Resources
 
