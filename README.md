@@ -1,5 +1,6 @@
 # Table of Contents
 - [Project Proposals](#project-proposals)
+- [Data Preprocessing](#data-preprocessing)
 - [Resources](#resources)
 
 ## Project Proposals
@@ -24,6 +25,9 @@ Dataset - https://www.kaggle.com/datasets/jessemostipak/college-tuition-diversit
   Factors that go into credit approval include credit history length, card utilization rates, on-time payment history, and more. Other factors can go into the approval process, which are more personal, such as gender, income, and having kids. All of these included, banks go through their approval processes to determine whether or not to give someone a new card or loan. By tracking this data and seeing the relation between each of these factors and the history of credit approvals, we can predict someone’s approval odds before they apply to prevent them from damaging their credit by getting denied. 
 
 Dataset - https://www.kaggle.com/datasets/rikdifos/credit-card-approval-prediction?select=application_record.csv
+
+## Data Preprocessing
+The first step in building the predictive model is to effectively research the topic and prepare the datasets.
 
 ## Resources
 
