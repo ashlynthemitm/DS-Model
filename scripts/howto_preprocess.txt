@@ -1,0 +1,239 @@
+"""
+Created on Mon Nov 13 18:22:01 2023
+
+@author: Ashlyn Campbell
+"""
+
+import pandas as pd
+from pandas import DataFrame, Series
+import numpy as np
+from sklearn import preprocessing
+from sklearn.impute import SimpleImputer
+import matplotlib.pyplot as plt
+import seaborn as sns
+from scipy.stats import zscore
+
+df = pd.read_csv('DS-Model/data_raw/diversity_school.csv', sep=',')
+
+# df_school.head() - displays th first few rows
+# df_school.dtypes - returns column names and datatypes
+
+# iterate through dataframe
+# for (name, series) in df_school.items():
+#     print(name, series) 
+
+# check out basics of your data first
+# for (name, series) in df.items():
+#     print('\n'+'ANALYZED ATTRIBUTE NAME:', name)
+#     # counting records
+#     print('--COUNT OF RECORDS:', df[name].size)
+#     # counting missing values
+#     print('-- COUNT OF MISSING VALUES:', sum(df[name].isnull().values.ravel()))
+#     print('-- RATIO OF MISSING VALUES:', (sum(df[name].isnull().values.ravel()) / df[name].size) * 100, '%')
+#     # counting unique values
+#     print('-- CARDINALITY=COUNT OF UNIQUE VALUES:', df[name].unique().size)
+    
+'''
+Output: 
+ANALYZED ATTRIBUTE NAME: name
+--COUNT OF RECORDS: 50655
+-- COUNT OF MISSING VALUES: 341
+-- RATIO OF MISSING VALUES: 0.6731813246471227 %
+-- CARDINALITY=COUNT OF UNIQUE VALUES: 4575
+
+ANALYZED ATTRIBUTE NAME: total_enrollment
+--COUNT OF RECORDS: 50655
+-- COUNT OF MISSING VALUES: 0
+-- RATIO OF MISSING VALUES: 0.0 %
+-- CARDINALITY=COUNT OF UNIQUE VALUES: 3043
+
+ANALYZED ATTRIBUTE NAME: state
+--COUNT OF RECORDS: 50655
+-- COUNT OF MISSING VALUES: 341
+-- RATIO OF MISSING VALUES: 0.6731813246471227 %
+-- CARDINALITY=COUNT OF UNIQUE VALUES: 51
+
+ANALYZED ATTRIBUTE NAME: category
+--COUNT OF RECORDS: 50655
+-- COUNT OF MISSING VALUES: 0
+-- RATIO OF MISSING VALUES: 0.0 %
+-- CARDINALITY=COUNT OF UNIQUE VALUES: 11
+
+ANALYZED ATTRIBUTE NAME: enrollment
+--COUNT OF RECORDS: 50655
+-- COUNT OF MISSING VALUES: 0
+-- RATIO OF MISSING VALUES: 0.0 %
+-- CARDINALITY=COUNT OF UNIQUE VALUES: 5441
+'''
+
+# finding null value in the DataFrame
+# print('The sum of null values are:')
+# print(df.isnull().sum())
+'''
+Output: 
+name                341
+total_enrollment      0
+state               341
+category              0
+enrollment            0
+dtype: int64
+'''
+
+# print('Count of cells BEFORE dropping empty cells:', df.size, '\n')
+'''
+Output:
+Count of cells BEFORE dropping empty cells: 253275        
+
+name                0
+total_enrollment    0
+state               0
+category            0
+enrollment          0
+dtype: int64
+'''
+# df = df.dropna()
+# print(df.isnull().sum())
+# print('Count of cells AFTER dropping empty cells:', df.size, '\n')
+# Count of cells AFTER dropping empty cells: 251570
+
+# drop columns with N|As
+# print(df.isnull().sum())
+# print('ROWSxCOLUMNS BEFORE dropping:', df.shape, '\n')
+
+# df = df.dropna(axis=1)
+# print(df.isnull().sum())
+# print('ROWSxCOLUMNS AFTER dropping:', df.shape)
+
+# Imputation, replace NaN values with mean
+# Imputation isn't the best for the diversity_school dataset
+# print(df.head(6)) # first 6 rows
+# print(df.isnull().sum())
+# print(df.shape)
+
+# # Imputer 
+# fill_NaN = SimpleImputer(missing_values=np.nan, strategy='mean')
+
+# imputed_DF = df
+# # filling data in by columns to transform numpy array to data frame
+# for col in df.columns:
+#     imputed_column = fill_NaN.fit_transform(df[col]).T
+#     # Fill in Series in DataFrame
+#     imputed_DF[col] = imputed_column
+    
+# print(imputed_DF.head(6))
+# print(imputed_DF.isnull().sum())
+# print(imputed_DF.shape)
+
+# Plotting Histograms
+# for (name, series) in df.items():
+#     # only allowed on Numeric Data
+#     if series.dtype != 'object':
+#         ax = df[name].plot.hist(bins=5, range=[10000, 100000])
+#         ax.set_title('Attribute: ' + df[name].name + '- Histogram with 5 Bins')
+#         ax.set_xlabel(df[name].name)
+#         ax.set_ylabel('Count')
+#         fig = ax.figure
+#         fig.set_size_inches(8,3)
+#         fig.tight_layout(pad=1)
+#         plt.show()
+#         # fig.savefig(df[name].name, dpi=600)
+#         # plt.close(fig)
+#         print('Plotting for Attribute ' + df[name].name + ' has been completed\n')
+
+# Use Histograms to investigate data (Unimodal, Normal distribution etc)
+
+# Plotting Box Plots 
+# numericDF = df._get_numeric_data()
+
+# natched plot
+# plt.boxplot(numericDF['enrollment'])
+# plt.ylim(0, 1000)
+# plt.show()
+# basic plot
+# plt.boxplot(numericDF['state'])
+# plt.show()
+#horizontal plot
+# plt.boxplot(numericDF['total_enrollment'], vert=False)
+# plt.xlim(0, 10000)
+# plt.show()
+
+# This data is extremely sparse, you can use the five-number summary to trim the data
+
+# numericDF=df._get_numeric_data()
+
+# # minimum value
+# print('-- MIN VALUE:', numericDF['total_enrollment'].min())
+# # first quartile value
+# print('-- FIRST QRT VALUE:', numericDF['enrollment'].quantile(.25))
+# # median value
+# print('-- MEDIAN VALUE:', numericDF['enrollment'].median())
+# # third quartile value
+# print('-- THIRD QRT VALUE:', numericDF['enrollment'].quantile(.75))
+# # max value
+# print('-- MAX VALUE:', numericDF['enrollment'].max())
+
+# # mean value
+# print('-- MEAN VALUE:', numericDF['enrollment'].mean())
+# # standard deviation value
+# print('-- STD VALUE:', numericDF['enrollment'].std())
+# # variance value
+# print('-- VARIANCE VALUE:', numericDF['enrollment'].var())
+
+# # Plotting Scatter Plot
+# plt.scatter(numericDF['total_enrollment'], numericDF['total_enrollment'])
+# plt.xlabel('College Names')
+# plt.ylabel(' Total Enrollment')
+# plt.show()
+
+
+# Creating heatmap of correlation matrix
+# SPMdf = df[['enrollment', 'total_enrollment']]
+
+# correlations = SPMdf.corr()
+
+# print(correlations)
+# sns.heatmap(correlations)
+
+## Normalization Techniques 
+# Min-Max Normalization to 0-1 RANGE
+
+# numericDF=df._get_numeric_data()
+# quantitative_DF = numericDF.drop(['total_enrollment'], axis=1)
+# print(quantitative_DF.head(5))
+# print(quantitative_DF.shape)
+
+# x = quantitative_DF.values # returns a numpy array 
+# min_max_scaler = preprocessing.MinMaxScaler()
+# x_scaled = min_max_scaler.fit_transform(x)
+# quantitative_DF=pd.DataFrame(x_scaled, columns=quantitative_DF.columns)
+# print(quantitative_DF.head(5))
+# print(quantitative_DF.shape)
+
+# Z-Score Normalization
+# numeric_DF=df._get_numeric_data()
+# quantative_DF = numeric_DF.drop(['enrollment'], axis=1)
+# print(quantative_DF.head(5))
+# print(quantative_DF.shape)
+
+# quantative_DF=quantative_DF.apply(zscore)
+# print(quantative_DF.head(5))
+# print(quantative_DF.shape)
+
+# Equal-Width Binning
+numeric_DF=df._get_numeric_data()
+quantative_DF = numeric_DF.drop(['enrollment'], axis=1)
+print(quantative_DF.head(5))
+print(quantative_DF.shape)
+
+for (name, series) in quantative_DF.items():
+    count, division = np.histogram(series, bins=np.linspace(series.min(), series.max(), 5))
+    print('ATTRIBUTE:', name)
+    print('-- BORDERS OF BINS:', division)
+    print('FREQUENCY IN RESPECTIVE BINS:', count)
+    
+'''
+Output: 
+ATTRIBUTE: total_enrollment
+-- BORDERS OF BINS: [1.000000e+00 4.876550e+04 9.753000e+04 1.462945e+05 1.950590e+05]
+FREQUENCY IN RESPECTIVE BINS: [50391   253     0    11]
+'''

@@ -6,7 +6,13 @@ Created on Mon Nov 13 18:22:01 2023
 
 import pandas as pd
 from pandas import DataFrame, Series
+import numpy as np
+from sklearn import preprocessing
+from sklearn.impute import SimpleImputer
+import matplotlib.pyplot as plt
+import seaborn as sns
+from scipy.stats import zscore
 
-df_school = pd.read_csv('DS-Model/data_raw/diversity_school.csv', sep=',')
+df = pd.read_csv('DS-Model/data_raw/diversity_school.csv', sep=',')
 
-print(df_school.head())
+# view the preprocessing tips & tricks howto_preprocess.txt
