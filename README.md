@@ -35,6 +35,6 @@ The first step in building the predictive model is to effectively research the t
 **Popular Data Science Packages**
 
 * [Pandas DataFrame Notes (uidaho.edu)](https://www.webpages.uidaho.edu/~stevel/504/pandas%20dataframe%20notes.pdf)
-
+* [Regression and Classification | Supervised Machine Learning - GeeksforGeeks](https://www.geeksforgeeks.org/regression-classification-supervised-machine-learning/)
 
 ## Resources
