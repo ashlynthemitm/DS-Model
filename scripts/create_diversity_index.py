@@ -123,7 +123,7 @@ def CreateDiversityPieChart():
     plt.axis('equal')
     plt.title('Northeast Diversity Index')
     plt.gcf().set_size_inches(8, 8)
-    plt.savefig('DS-Model/visualizations/northeast_diversity.png')
+    # plt.savefig('DS-Model/visualizations/northeast_diversity.png')
     plt.show()
 
     # Midwest Diversity Pie Charts
@@ -135,7 +135,7 @@ def CreateDiversityPieChart():
     plt.axis('equal')
     plt.title('Midwest Diversity Index')
     plt.gcf().set_size_inches(8, 8)
-    plt.savefig('DS-Model/visualizations/midwest_diversity.png')
+    # plt.savefig('DS-Model/visualizations/midwest_diversity.png')
     plt.show()
         
     # West Diversity Pie Charts
@@ -147,7 +147,7 @@ def CreateDiversityPieChart():
     plt.axis('equal')
     plt.title('West Diversity Index')
     plt.gcf().set_size_inches(8, 8)
-    plt.savefig('DS-Model/visualizations/west_diversity.png')
+    # plt.savefig('DS-Model/visualizations/west_diversity.png')
     plt.show()
     
     # South Diversity Pie Charts
@@ -159,7 +159,7 @@ def CreateDiversityPieChart():
     plt.axis('equal')
     plt.title('South Diversity Index')
     plt.gcf().set_size_inches(8, 8)
-    plt.savefig('DS-Model/visualizations/south_diversity.png')
+    # plt.savefig('DS-Model/visualizations/south_diversity.png')
     plt.show()
     
     plt.close()
