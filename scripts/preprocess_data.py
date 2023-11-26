@@ -71,4 +71,4 @@ def addDiversityPercent():
     
     df.to_csv('DS-Model/data_raw/diversity_school.csv', index=False)
     
-addDiversityPercent()
+#addDiversityPercent()

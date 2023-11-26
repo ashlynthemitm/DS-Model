@@ -1,2 +1,11 @@
-# ignore the ipynb_checkpoints folder
-.ipynb_checkpoints
+# ignore temp folder
+temp/
+
+# ignore any .env file
+*.env
+
+# ignore any .json file
+*.json
+
+# ignore any __pycache__ file
+*__pycache__
